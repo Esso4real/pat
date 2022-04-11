@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: default
+  name: hello-kubernetes
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+spec:
+  rules:
+    - host: ghostshell.online
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: hello-kubernetes
+              servicePort: 80
